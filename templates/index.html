@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume ATS Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+        .card-header {
+            background-color: #e9ecef;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            color: #495057;
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 30px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .benefits {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .benefit-item {
+            margin-bottom: 15px;
+        }
+        .benefit-item h5 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Resume ATS Analyzer</h1>
+                <p class="lead">Upload your resume to get an instant ATS compatibility score.</p>
+            </div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="alert alert-warning">
+                            {{ messages[0] }}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <form method="post" action="/upload" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="resume" class="form-label">Upload Your Resume (PDF only)</label>
+                        <input type="file" class="form-control" id="resume" name="resume" accept=".pdf" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Analyze Resume</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="benefits">
+            <h3>What is ATS and Why It Matters</h3>
+            <p>Applicant Tracking Systems (ATS) are software used by employers to manage job applications. They scan resumes for keywords and format compatibility before a human sees them.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="benefit-item">
+                        <h5>Benefits of ATS Optimization:</h5>
+                        <ul>
+                            <li><strong>Increase Visibility:</strong> Get past the initial filters to reach recruiters.</li>
+                            <li><strong>Save Time:</strong> Tailor your resume quickly with keyword insights.</li>
+                            <li><strong>Boost Chances:</strong> Higher scores mean more interview opportunities.</li>
+                            <li><strong>Modern Edge:</strong> Stay competitive in a digital hiring world.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="benefit-item">
+                        <h5>Quick Tips for Better Scores:</h5>
+                        <ul>
+                            <li>Use standard fonts and no images/tables.</li>
+                            <li>Include job-specific keywords.</li>
+                            <li>Keep sections clear: Summary, Experience, Skills, Education.</li>
+                            <li>Save as PDF for consistent parsing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
