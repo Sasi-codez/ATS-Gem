@@ -3,4 +3,6 @@ Flask==3.0.3
 PyPDF2==3.0.1
 google-generativeai==0.8.3
 Werkzeug==3.0.4
+gunicorn==23.0.0
 #a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2
+
